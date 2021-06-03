@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Getting Started: Serving Web Content</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div th:insert="blocks/header :: header"></div>
+        <div>
+<!--            <p th:text="'Hello, ' + ${title} + '!'" />-->
+            <div th:each="el : ${companies}">
+                <a th:href="'/company/' + ${el.id}"><h3 th:text="${el.name}"/></a>
+            </div>
+        </div>
+    </body>
+</html>
