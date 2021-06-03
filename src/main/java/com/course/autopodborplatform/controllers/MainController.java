@@ -1,7 +1,7 @@
 package com.course.autopodborplatform.controllers;
 
 import com.course.autopodborplatform.models.Company;
-import com.course.autopodborplatform.repositories.CompanyRepositoryI;
+import com.course.autopodborplatform.repositories.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +15,11 @@ import java.util.Optional;
 public class MainController {
 
     @Autowired
-    private CompanyRepositoryI companyRepositoryI;
+    private CompanyRepository companyRepository;
 
     @GetMapping("/")
     public String home(Model model) {
-        Iterable<Company> companies = companyRepositoryI.findAll();
+        Iterable<Company> companies = companyRepository.findAll();
 //        model.addAttribute("title", "Главная страница");
         model.addAttribute("companies", companies);
         return "home";
@@ -28,7 +28,7 @@ public class MainController {
     @GetMapping("/company/{id}")
     public String company(@PathVariable(value = "id") long id, Model model) {
         Company companies = new Company();
-        Optional<Company> company = companyRepositoryI.findById(id);
+        Optional<Company> company = companyRepository.findById(id);
         ArrayList<Company> res = new ArrayList<>();
         company.ifPresent(res::add);
         model.addAttribute("company", res);
