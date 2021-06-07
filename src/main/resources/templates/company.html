@@ -11,6 +11,7 @@
             <div class="container mt-5">
                 <div th:each="el : ${company}">
                     <h4 th:text="${el.name}"/>
+                    <p th:text="${el.description}"/>
                     <a th:href="'/company/' + ${el.id} + '/request'">Оформить заявку</a>
                 </div>
             </div>

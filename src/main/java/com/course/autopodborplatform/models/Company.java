@@ -1,16 +1,18 @@
 package com.course.autopodborplatform.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(unique = true,nullable = false)
     private String name;
+
+    @Column(nullable = false)
+    private String description;
 
     public Long getId() {
         return id;
@@ -26,5 +28,13 @@ public class Company {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

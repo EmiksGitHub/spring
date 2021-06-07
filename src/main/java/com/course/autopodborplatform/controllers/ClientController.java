@@ -12,19 +12,20 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @Controller
-public class MainController {
+public class ClientController {
 
     @Autowired
     private CompanyRepository companyRepository;
 
+    //Главная страница
     @GetMapping("/")
     public String home(Model model) {
         Iterable<Company> companies = companyRepository.findAll();
-//        model.addAttribute("title", "Главная страница");
         model.addAttribute("companies", companies);
         return "home";
     }
 
+    //Страница компании, ее описание
     @GetMapping("/company/{id}")
     public String company(@PathVariable(value = "id") long id, Model model) {
         Company companies = new Company();
@@ -35,4 +36,9 @@ public class MainController {
         return "company";
     }
 
+    //Страница заявок клиента
+    @GetMapping("/requests")
+    public String requests(Model model) {
+        return "requests";
+    }
 }
