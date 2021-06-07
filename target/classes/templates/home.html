@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <title>Вселенная автоподбора</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -9,7 +9,7 @@
         <div th:insert="blocks/header :: header"></div>
         <div class="container mt-5">
             <h3>Список компаний по подбору автомобилей:</h3>
-            <div th:each="el : ${companies}">
+            <div th:each="el : ${companies}" th:if="${user.getRole().getID()==0}"> <!--Показ компаний только клиентам-->
                 <a th:href="'/company/' + ${el.id}"><h3 th:text="${el.name}"/></a>
             </div>
         </div>
