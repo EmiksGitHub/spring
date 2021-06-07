@@ -20,13 +20,12 @@ public class ClientController {
     //Главная страница
     @GetMapping("/")
     public String home(Model model) {
-        Iterable<Company> companies = companyRepository.findAll();
+        Iterable<Company> companies = companyRepository.findAll(); //Вывод из бд всех компаний
         model.addAttribute("companies", companies);
         return "home";
     }
 
-    //Страница компании, ее описание
-    @GetMapping("/company/{id}")
+    @GetMapping("/company/{id}") //Страница компании, ее описание
     public String company(@PathVariable(value = "id") long id, Model model) {
         Company companies = new Company();
         Optional<Company> company = companyRepository.findById(id);
@@ -36,8 +35,7 @@ public class ClientController {
         return "company";
     }
 
-    //Страница заявок клиента
-    @GetMapping("/requests")
+    @GetMapping("/requests") //Страница заявок клиента
     public String requests(Model model) {
         return "requests";
     }

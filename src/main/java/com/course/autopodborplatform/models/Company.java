@@ -3,6 +3,7 @@ package com.course.autopodborplatform.models;
 import javax.persistence.*;
 
 @Entity
+@Table(name="companies")
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

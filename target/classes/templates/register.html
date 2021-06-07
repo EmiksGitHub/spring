@@ -41,6 +41,14 @@
                     <small class="form-text text-danger" th:each="err: ${#fields.errors('username')}">Validation error</small>
                 </div>
                 <div class="form-group">
+                    <label for="role">Role</label>
+                    <select th:field="*{role_id}" id="role">
+                        <option th:value="0" th:text="Клиент"></option>
+                        <option th:value="1" th:text="Компания"></option>
+                    </select>
+                    <small class="form-text text-danger" th:each="err: ${#fields.errors('role_id')}">Validation error</small>
+                </div>
+                <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" th:field="*{password}"  class="form-control" placeholder="Password">
                     <small class="form-text text-danger" th:each="err: ${#fields.errors('password')}">Validation error</small>

@@ -13,21 +13,21 @@ import java.util.Collections;
 
 @Service
 public class UserAuthService implements UserDetailsService {
-private final UserRepository repository;
+    private final UserRepository repository;
 
-@Autowired
-public UserAuthService(UserRepository repository) {
-this.repository=repository;
-}
+    @Autowired
+    public UserAuthService(UserRepository repository) {
+    this.repository=repository;
+    }
 
-@Override
-public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    return repository.findByUsername(username)
-            .map(user -> new User(
-                    user.getUsername(),
-                    user.getPassword(),
-                    Collections.singletonList(new SimpleGrantedAuthority("USER"))
-            ))
-            .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
-}
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return repository.findByUsername(username)
+                .map(user -> new User(
+                        user.getUsername(),
+                        user.getPassword(),
+                        Collections.singletonList(new SimpleGrantedAuthority("CLIENT"))
+                ))
+                .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
+    }
 }
