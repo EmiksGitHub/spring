@@ -2,7 +2,6 @@ package com.course.autopodborplatform.models;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,8 +21,22 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
 
+    @OneToOne
+    private Company company;
+
     @ManyToOne
     private Role role;
+
+    @OneToMany(
+            mappedBy="user",
+            cascade=CascadeType.ALL,
+            orphanRemoval=true
+    )
+    private List<Request> requests;
+
+    public List<Request> getRequests() {
+        return requests;
+    }
 
     public User() {
     }
@@ -84,5 +97,13 @@ public class User implements UserDetails {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }

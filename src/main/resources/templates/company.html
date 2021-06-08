@@ -12,7 +12,7 @@
                 <div th:each="el : ${company}">
                     <h4 th:text="${el.name}"/>
                     <p th:text="${el.description}"/>
-                    <a th:href="'/company/' + ${el.id} + '/request'">Оформить заявку</a>
+                    <a th:href="'/company/' + ${el.id} + '/request'" th:if="${user.getRole().getID()==0}">Оформить заявку</a>
                 </div>
             </div>
         </div>

@@ -1,7 +1,9 @@
 package com.course.autopodborplatform.service;
 
+import com.course.autopodborplatform.models.Company;
 import com.course.autopodborplatform.models.Role;
 import com.course.autopodborplatform.models.User;
+import com.course.autopodborplatform.repositories.CompanyRepository;
 import com.course.autopodborplatform.repositories.UserRepository;
 import com.course.autopodborplatform.service.UserRepr;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,6 +17,9 @@ public class UserService {
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
+    private CompanyRepository companyRepository;
+
+    @Autowired
     public UserService(UserRepository repository, BCryptPasswordEncoder passwordEncoder) {
         this.repository = repository;
         this.passwordEncoder = passwordEncoder;
@@ -25,6 +30,16 @@ public class UserService {
         user.setUsername(userRepr.getUsername());
         user.setPassword(passwordEncoder.encode(userRepr.getPassword()));
         user.setRole(role);
-        repository.save(user);
+        if (role.getID()==1) {
+            Company company = new Company();
+            companyRepository.save(company);
+            user.setCompany(company);
+            repository.save(user);
+            company.setUser(user);
+            companyRepository.save(company);
+        }
+        else  {
+            repository.save(user);
+        }
     }
 }

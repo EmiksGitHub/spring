@@ -9,11 +9,17 @@
         <div th:insert="blocks/header :: header"></div>
         <div>
             <div class="container mt-5">
-                <div th:each="el : ${company}">
-                    <h4 th:text="${el.name}"/>
-                    <p th:text="${el.description}"/>
-                    <a th:href="'/company/' + ${el.id} + '/request'" th:if="${user.getRole().getID()==0}">Оформить заявку</a>
-                </div>
+
+                <form th:method="POST" th:action="@{/edit_companyP}"  th:object="${company}">
+                    <label for="description">Описание:
+                        <input type="text" th:field="*{description}" id="description" />
+                    </label><br />
+                    <label for="name">Имя:
+                        <input th:value="*{name}" name="name" id="name"  />
+                    </label><br />
+                    <input  type="Submit" value="Подтвердить" />
+                </form>
+
             </div>
         </div>
     </body>

@@ -2,16 +2,14 @@ package com.course.autopodborplatform.models;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="roles")
-public class Role implements GrantedAuthority, Serializable {
+@Table(name="statuses")
+public class Status {
 
     @Id
     @GeneratedValue(generator = "increment")
@@ -23,20 +21,13 @@ public class Role implements GrantedAuthority, Serializable {
     private String name;
 
     @OneToMany(
-            mappedBy="role",
+            mappedBy="status",
             cascade=CascadeType.ALL,
             orphanRemoval=true
     )
+    private List<Request> requests;
 
-    private List<User> users;
-
-    public Role(int ID, String name, List<User> users) {
-        this.ID = ID;
-        this.name = name;
-        this.users = users;
-    }
-
-    public Role() {
+    public Status() {
     }
 
     public int getID() {
@@ -55,16 +46,11 @@ public class Role implements GrantedAuthority, Serializable {
         this.name = name;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public List<Request> getRequests() {
+        return requests;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-    @Override
-    public String getAuthority() {
-        return "ROLE_" + name;
+    public void setRequests(List<Request> requests) {
+        this.requests = requests;
     }
 }

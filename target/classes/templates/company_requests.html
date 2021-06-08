@@ -8,10 +8,127 @@
     <body>
         <div th:insert="blocks/header :: header"></div>
         <div class="container mt-5">
-            <h3>Заявки компании:</h3>
-            <div>
-                <p>Список заявок не реализован.</p>
+            <h3>Заявки, ожидающие принятия:</h3>
+            <div class="container">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                    <tr>
+                        <th scope="row">Оформитель</th>
+                        <th scope="row">Марка</th>
+                        <th scope="row">Модель</th>
+                        <th scope="col">Бюджет</th>
+                        <th scope="col">Цель</th>
+                        <th scope="col">Статус заявки</th>
+                        <th scope="col">Принять</th>
+                        <th scope="col">Отказать</th>
+                    </tr>
+                    </thead>
+                    <tbody th:each= "r : ${Defrequests}">
+                    <tr>
+                        <th scope="row" th:text="${r.getUser().getUsername()}"></th>
+                        <td th:text="${r.getCarBrand()}"></td>
+                        <td th:text="${r.getCarModel()}"></td>
+                        <td th:text="${r.getPrice()}"></td>
+                        <td th:text="${r.getPurpose()}"></td>
+                        <td th:text="${r.getStatus().getName()}"></td>
+                        <td>
+                            <form th:method="POST" th:action="@{/access_request}">
+                                <input class="btn btn-primary" type="Submit" value="Принять" />
+                                <label for="request_id">
+                                    <input type="hidden" th:value="${r.getId()}" name="request_id" id="request_id"  />
+                                </label><br />
+                            </form>
+                        </td>
+                        <td>
+                            <form th:method="POST" th:action="@{/denied_request}">
+                                <input class="btn btn-primary" type="Submit" value="Отказать" />
+                                <label for="request_id1">
+                                    <input type="hidden" th:value="${r.getId()}" name="request_id1" id="request_id1"  />
+                                </label><br />
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+
             </div>
+
+        </div>
+        <div class="container mt-5">
+            <h3>Заявки в работе:</h3>
+            <div class="container">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                    <tr>
+                        <th scope="row">Оформитель</th>
+                        <th scope="row">Марка</th>
+                        <th scope="row">Модель</th>
+                        <th scope="col">Бюджет</th>
+                        <th scope="col">Цель</th>
+                        <th scope="col">Статус заявки</th>
+                        <th scope="col">Список авто</th>
+                        <th scope="col">Добавить авто</th>
+                        <th scope="col">Закончить подбор</th>
+                    </tr>
+                    </thead>
+                    <tbody th:each= "r : ${InProcessrequests}">
+                    <tr>
+                        <th scope="row" th:text="${r.getUser().getUsername()}"></th>
+                        <td th:text="${r.getCarBrand()}"></td>
+                        <td th:text="${r.getCarModel()}"></td>
+                        <td th:text="${r.getPrice()}"></td>
+                        <td th:text="${r.getPurpose()}"></td>
+                        <td th:text="${r.getStatus().getName()}"></td>
+                        <td><a th:href="@{/{id}/cars(id = ${r.getId()} )}">Показать авто</a></td>
+                        <td> <a class="btn btn-primary" th:href="@{/{id}/add_car_to_request(id = ${r.getId()} )}"  role="button">Добавить</a></td>
+                        <td>
+                            <form th:method="POST" th:action="@{/finish_podbor}">
+                                <input class="btn btn-primary" type="Submit" value="Закончить подбор" />
+                                <label for="request_id2">
+                                    <input type="hidden" th:value="${r.getId()}" name="request_id2" id="request_id2"  />
+                                </label><br />
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+
+            </div>
+
+        </div>
+        <div class="container mt-5">
+            <h3>Закрытые заявки:</h3>
+            <div class="container">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                    <tr>
+                        <th scope="row">Оформитель</th>
+                        <th scope="row">Марка</th>
+                        <th scope="row">Модель</th>
+                        <th scope="col">Бюджет</th>
+                        <th scope="col">Цель</th>
+                        <th scope="col">Статус заявки</th>
+                        <th scope="col">Список авто</th>
+                    </tr>
+                    </thead>
+                    <tbody th:each= "r : ${finishrequests}">
+                    <tr>
+                        <th scope="row" th:text="${r.getUser().getUsername()}"></th>
+                        <td th:text="${r.getCarBrand()}"></td>
+                        <td th:text="${r.getCarModel()}"></td>
+                        <td th:text="${r.getPrice()}"></td>
+                        <td th:text="${r.getPurpose()}"></td>
+                        <td th:text="${r.getStatus().getName()}"></td>
+                        <td><a th:href="@{/{id}/cars(id = ${r.getId()} )}">Показать авто</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br/>
+
+            </div>
+
         </div>
     </body>
 </html>
