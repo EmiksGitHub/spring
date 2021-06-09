@@ -1,7 +1,5 @@
 package com.course.autopodborplatform.service;
 
-import com.course.autopodborplatform.models.Role;
-
 import javax.validation.constraints.NotBlank;
 
 public class UserRepr {

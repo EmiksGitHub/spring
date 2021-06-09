@@ -9,48 +9,45 @@
         <div th:insert="blocks/header :: header"></div>
         <div>
             <div class="container mt-5">
-
                 <form th:method="POST" th:action="@{/add_request}"  th:object="${request}">
-
                     Бюджет:
-                    <br/>
+                    <br>
                     <input type="text" id="price" th:field="*{price}" class="form-control" placeholder="Бюджет"
-                           aria-label="Enter name" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <br/>
+                    aria-label="Enter name" aria-describedby="basic-addon2">
+                    <div class="input-group-append"/>
+                    <br>
 
-                        Марка:
-                        <br/>
-                        <input type="text" id="carBrand" th:field="*{carBrand}" class="form-control"
-                               placeholder="Введите марку автомобиля (необяз)" aria-label="Марка автомобиля (необяз)"
-                               aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <br/>
+                    Марка:
+                    <br>
+                    <input type="text" id="carBrand" th:field="*{carBrand}" class="form-control"
+                    placeholder="Введите марку автомобиля (необяз)" aria-label="Марка автомобиля (необяз)"
+                    aria-describedby="basic-addon2">
+                    <div class="input-group-append"/>
+                    <br>
 
-                            Модель:
-                            <br/>
-                            <input type="text" id="carModel" th:field="*{carModel}" class="form-control"
-                                   placeholder="Введите модель (необяз)" aria-label="Модель"
-                                   aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <br/>
+                    Модель:
+                    <br>
+                    <input type="text" id="carModel" th:field="*{carModel}" class="form-control"
+                    placeholder="Введите модель (необяз)" aria-label="Модель"
+                    aria-describedby="basic-addon2">
+                    <div class="input-group-append"/>
+                    <br>
 
-                                Цели использования:
-                                <br/>
-                                <textarea type="text" id="purpose" th:field="*{purpose}" class="form-control"
-                                       placeholder="Введите использвания" aria-label="Модель"
-                                       aria-describedby="basic-addon2">
-                                </textarea>
-                                    <br/>
-                                <input class="btn btn-primary" type="Submit" value="Оформить"/>
+                    Цели использования:
+                    <br>
+                    <textarea type="text" id="purpose" th:field="*{purpose}" class="form-control"
+                    placeholder="Введите использвания" aria-label="Модель"
+                    aria-describedby="basic-addon2">
+                    </textarea>
+                    <br>
 
-                                <label for="company_id">
-                                    <input type="hidden" th:value="${company_id}" name="company_id" id="company_id"  />
-                                </label><br />
+                    <input class="btn btn-primary" type="Submit" value="Оформить"/>
 
-
+                    <label for="company_id">
+                    <input type="hidden" th:value="${company_id}" name="company_id" id="company_id"/>
+                    </label>
+                    <br>
                 </form>
-
             </div>
         </div>
     </body>

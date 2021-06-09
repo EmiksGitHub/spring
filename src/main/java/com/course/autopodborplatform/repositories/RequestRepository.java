@@ -1,6 +1,5 @@
 package com.course.autopodborplatform.repositories;
 
-import com.course.autopodborplatform.models.Company;
 import com.course.autopodborplatform.models.Request;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

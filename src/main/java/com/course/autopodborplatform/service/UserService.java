@@ -5,7 +5,6 @@ import com.course.autopodborplatform.models.Role;
 import com.course.autopodborplatform.models.User;
 import com.course.autopodborplatform.repositories.CompanyRepository;
 import com.course.autopodborplatform.repositories.UserRepository;
-import com.course.autopodborplatform.service.UserRepr;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;

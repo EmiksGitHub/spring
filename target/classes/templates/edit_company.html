@@ -9,8 +9,7 @@
         <div th:insert="blocks/header :: header"></div>
         <div>
             <div class="container mt-5">
-
-                <form th:method="POST" th:action="@{/edit_companyP}"  th:object="${company}">
+                <!--<form th:method="POST" th:action="@{/edit_companyP}"  th:object="${company}">
                     <label for="description">Описание:
                         <input type="text" th:field="*{description}" id="description" />
                     </label><br />
@@ -18,8 +17,24 @@
                         <input th:value="*{name}" name="name" id="name"  />
                     </label><br />
                     <input  type="Submit" value="Подтвердить" />
-                </form>
+                </form>-->
+                <form th:method="POST" th:action="@{/edit_companyP}"  th:object="${company}">
 
+                    Название компании:
+                    <br>
+                    <input type="text" id="name" th:field="*{name}" class="form-control"
+                           placeholder="Введите название компании" aria-describedby="basic-addon2">
+                    <div class="input-group-append"/>
+                    <br>
+                    Описание:
+                    <br>
+                    <input type="text" id="description" th:field="*{description}" class="form-control"
+                    placeholder="Введите описание" aria-describedby="basic-addon2">
+                    <div class="input-group-append"/>
+                    <br>
+
+                    <input class="btn btn-primary" type="Submit" value="Подтвердить"/>
+                </form>
             </div>
         </div>
     </body>

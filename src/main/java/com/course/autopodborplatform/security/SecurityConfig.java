@@ -13,11 +13,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
     private PasswordEncoder passwordEncoder;
-
     private com.course.autopodborplatform.security.UserAuthService userAuthService;
-
     @Autowired
     public void setPasswordEncoder(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
@@ -35,8 +32,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
+                .antMatchers("/company_requests", "/edit_company", "/edit_companyP", "/denied_request",
+                        "/access_request", "/add_car_to_request", "/delete_car", "/finish_podbor").hasRole("COMPANY")
+                .antMatchers("/requests/**", "/add_request", "/choose_car").hasRole("CLIENT")
                 .antMatchers("/**").authenticated()
-                /*.antMatchers("/**").hasRole("CLIENT")*/
+
                 .and()
                 .formLogin()
                 .loginPage("/login")

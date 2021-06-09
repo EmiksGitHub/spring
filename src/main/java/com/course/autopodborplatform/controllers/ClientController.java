@@ -5,7 +5,6 @@ import com.course.autopodborplatform.models.Company;
 import com.course.autopodborplatform.models.Request;
 import com.course.autopodborplatform.models.User;
 import com.course.autopodborplatform.repositories.*;
-import com.course.autopodborplatform.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -98,13 +96,13 @@ public class ClientController {
         return "redirect:/requests";
     }
 
-    @GetMapping("/requests/{id}/cars") //Страница оформления заявки в компанию
+    @GetMapping("/requests/{id}/cars")
     public String choose_car(@PathVariable(value = "id") long id, Model model, Principal principal) {
         model.addAttribute("cars" ,requestRepository.getById(id).getCars());
         model.addAttribute("user", userRepository.findByUsername(principal.getName()).get());
         return "cars_for_client";
     }
-    @PostMapping("/choose_car") //Страница оформления заявки в компанию
+    @PostMapping("/choose_car")
     public String choose_car(@ModelAttribute("request_id")  long idR, @ModelAttribute("car_id")  long idC, Principal principal) {
         Request request = requestRepository.getById(idR);
         request.setStatus(statusRepository.getById(3));

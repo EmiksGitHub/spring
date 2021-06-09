@@ -101,7 +101,7 @@ public class CompanyController {
             model.addAttribute("user", user);
             model.addAttribute("id_request", id);
             model.addAttribute("maxPrice", requestRepository.getById(id).getPrice());
-            model.addAttribute("error", "Клиент нищий");
+            model.addAttribute("error", "Цена больше бюджета клиента!");
             return "/add_car_to_request";
         }
         carRepository.save(car);
