@@ -9,7 +9,7 @@
         <div th:insert="blocks/header :: header"></div>
         <div class="container mt-5">
             <h3>Список компаний по подбору автомобилей:</h3>
-            <div th:each="el : ${companies}"> <!--Показ компаний только клиентам-->
+            <div th:each="el : ${companies}">
                 <a th:href="'/company/' + ${el.id}"><h3 th:text="${el.name}"/></a>
             </div>
         </div>

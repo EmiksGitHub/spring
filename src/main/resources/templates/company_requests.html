@@ -41,7 +41,8 @@
                         </td>
                         <td>
                             <form th:method="POST" th:action="@{/denied_request}">
-                                <input class="btn btn-primary" type="Submit" value="Отказать" />
+                                <input class="btn btn-primary" type="Submit" value="Отказать" style="
+                                background-color: red;"/>
                                 <label for="request_id1">
                                     <input type="hidden" th:value="${r.getId()}" name="request_id1" id="request_id1"  />
                                 </label><br />
@@ -81,10 +82,12 @@
                         <td th:text="${r.getPurpose()}"></td>
                         <td th:text="${r.getStatus().getName()}"></td>
                         <td><a th:href="@{/{id}/cars(id = ${r.getId()} )}">Показать авто</a></td>
-                        <td> <a class="btn btn-primary" th:href="@{/{id}/add_car_to_request(id = ${r.getId()} )}"  role="button">Добавить</a></td>
+                        <td> <a class="btn btn-primary" th:href="@{/{id}/add_car_to_request(id = ${r.getId()} )}"
+                                role="button">Добавить</a></td>
                         <td>
                             <form th:method="POST" th:action="@{/finish_podbor}">
-                                <input class="btn btn-primary" type="Submit" value="Закончить подбор" />
+                                <input class="btn btn-primary" type="Submit" value="Закончить подбор"
+                                       style="background-color: green;"/>
                                 <label for="request_id2">
                                     <input type="hidden" th:value="${r.getId()}" name="request_id2" id="request_id2"  />
                                 </label><br />
