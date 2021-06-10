@@ -26,7 +26,6 @@ public class Role implements GrantedAuthority, Serializable {
             cascade=CascadeType.ALL,
             orphanRemoval=true
     )
-
     private List<User> users;
 
     public Role(int ID, String name, List<User> users) {

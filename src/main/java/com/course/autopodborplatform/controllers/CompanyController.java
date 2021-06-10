@@ -20,6 +20,7 @@ public class CompanyController {
 
     @Autowired
     private CompanyRepository companyRepository;
+    @Autowired
     private UserRepository userRepository;
     @Autowired
     private RequestRepository requestRepository;
@@ -34,7 +35,6 @@ public class CompanyController {
         this.userRepository = userRepository;
     }
 
-    //Страница заявок у компани
     @GetMapping("/company_requests")
     public String requests(Model model, Principal principal) {
         User user = userRepository.findByUsername(principal.getName()).get();
@@ -46,7 +46,6 @@ public class CompanyController {
         return "company_requests";
     }
 
-    //Страница редактирования компании, описания и имя
     @GetMapping("/edit_company")
     public String edit_company(Model model, Principal principal) {
         User user = userRepository.findByUsername(principal.getName()).get();
@@ -73,7 +72,7 @@ public class CompanyController {
         return "redirect:/company_requests";
     }
     @PostMapping("/access_request")
-    public String access_request(@ModelAttribute("request_id") long id, Principal principal) {
+        public String access_request(@ModelAttribute("request_id") long id, Principal principal) {
         Request request =  requestRepository.getById(id);
         request.setStatus(statusRepository.getById(1));
         requestRepository.save(request);

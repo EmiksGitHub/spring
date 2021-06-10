@@ -20,6 +20,7 @@ public class ClientController {
 
     @Autowired
     private CompanyRepository companyRepository;
+    @Autowired
     private UserRepository userRepository;
     @Autowired
     private RequestRepository requestRepository;
@@ -28,18 +29,12 @@ public class ClientController {
     @Autowired
     private CarRepository carRepository;
 
-
     @Autowired
     public ClientController(CompanyRepository companyRepository, UserRepository userRepository) {
         this.companyRepository = companyRepository;
         this.userRepository = userRepository;
     }
 
-
-
-
-
-    //Главная страница
     @GetMapping("/")
     public String home(Model model, Principal principal) {
 
@@ -79,8 +74,9 @@ public class ClientController {
         return "add_request";
     }
 
-    @PostMapping("/add_request") //Страница оформления заявки в компанию
-    public String add_request(@ModelAttribute("request") Request request, @ModelAttribute("company_id")  long id, Principal principal) {
+    @PostMapping("/add_request")
+    public String add_request(@ModelAttribute("request") Request request, @ModelAttribute("company_id")  long id,
+                              Principal principal) {
         User user = userRepository.findByUsername(principal.getName()).get();
         Company company = companyRepository.getById(id);
         request.setUser(user);

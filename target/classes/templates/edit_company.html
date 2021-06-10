@@ -9,15 +9,6 @@
         <div th:insert="blocks/header :: header"></div>
         <div>
             <div class="container mt-5">
-                <!--<form th:method="POST" th:action="@{/edit_companyP}"  th:object="${company}">
-                    <label for="description">Описание:
-                        <input type="text" th:field="*{description}" id="description" />
-                    </label><br />
-                    <label for="name">Имя:
-                        <input th:value="*{name}" name="name" id="name"  />
-                    </label><br />
-                    <input  type="Submit" value="Подтвердить" />
-                </form>-->
                 <form th:method="POST" th:action="@{/edit_companyP}"  th:object="${company}">
 
                     Название компании:
