@@ -31,13 +31,13 @@
                             <td th:text="${r.getPurpose()}"></td>
                             <td th:text="${r.getStatus().getName()}"></td>
                             <td>
-                                <a th:href="@{/requests/{id}/cars(id = ${r.getId()} )}" th:if="${r.getStatus().getID()==2}">Показать авто</a>
+                                <a th:href="@{/requests/{id}/cars(id = ${r.getId()} )}" th:if="${r.getStatus().getID()==2}">
+                                    Показать авто
+                                </a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <br/>
-
             </div>
         </div>
     </body>

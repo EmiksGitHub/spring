@@ -46,12 +46,10 @@ public class ClientController {
 
     @GetMapping("/company/{id}") //Страница компании, ее описание
     public String company(@PathVariable(value = "id") long id, Model model, Principal principal) {
-        Company companies = new Company();
-        Optional<Company> company = companyRepository.findById(id);
-        ArrayList<Company> res = new ArrayList<>();
-        company.ifPresent(res::add);
-        model.addAttribute("company", res);
+        model.addAttribute("companyDescription", companyRepository.getById(id).getDescription());
+        model.addAttribute("companyName", companyRepository.getById(id).getName());
         model.addAttribute("user", userRepository.findByUsername(principal.getName()).get());
+        model.addAttribute("companyId", companyRepository.getById(id).getId());
         return "company";
     }
 
@@ -66,10 +64,8 @@ public class ClientController {
 
     @GetMapping("/company/{id}/request") //Страница оформления заявки в компанию
     public String addRequest(@PathVariable(value = "id") long id, Model model, Principal principal) {
-
         model.addAttribute("request", new Request());
         model.addAttribute("company_id", id);
-
         model.addAttribute("user", userRepository.findByUsername(principal.getName()).get());
         return "add_request";
     }

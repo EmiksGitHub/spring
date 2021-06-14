@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
-        <title>Getting Started: Serving Web Content</title>
+        <title th:text="'Компания: ' + ${companyName}"></title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
     </head>
@@ -9,11 +9,11 @@
         <div th:insert="blocks/header :: header"></div>
         <div>
             <div class="container mt-5">
-                <div th:each="el : ${company}">
-                    <h4 th:text="${el.name}"/>
-                    <p th:text="${el.description}"/>
-                    <a th:href="'/company/' + ${el.id} + '/request'" th:if="${user.getRole().getID()==0}">Оформить заявку</a>
-                </div>
+                <h4 th:text="${companyName}"/>
+                <p th:text="${companyDescription}"/>
+                <a th:href="'/company/' + ${companyId} + '/request'" th:if="${user.getRole().getID()==0}">
+                    Оформить заявку
+                </a>
             </div>
         </div>
     </body>

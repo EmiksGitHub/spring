@@ -12,39 +12,34 @@
             <div class="container">
                 <table class="table table-striped">
                     <thead class="table-dark">
-                    <tr>
-                        <th scope="row">Цена</th>
-                        <th scope="col">Марка</th>
-                        <th scope="col">Модель</th>
-                        <th scope="col">Фото</th>
-                        <th scope="col">Описание</th>
-                        <th th:if="${flag}" scope="col">Удалить</th>
-                    </tr>
+                        <tr>
+                            <th scope="row">Цена</th>
+                            <th scope="col">Марка</th>
+                            <th scope="col">Модель</th>
+                            <th scope="col">Фото</th>
+                            <th scope="col">Описание</th>
+                            <th th:if="${flag}" scope="col">Удалить</th>
+                        </tr>
                     </thead>
                     <tbody th:each= "c : ${cars}">
-                    <tr>
-                        <th scope="row" th:text="${c.getPrice()}"></th>
-                        <td th:text="${c.getCarBrand()}"></td>
-                        <td th:text="${c.getCarModel()}"></td>
-                        <td th:text="${c.getImg()}"></td>
-                        <td th:text="${c.getDescription()}"></td>
-                        <td th:if="${flag}">
-                            <form th:method="POST" th:action="@{/delete_car}">
-                                <input class="btn btn-primary" type="Submit" value="Удалить" />
-                                <label for="car_id">
-                                    <input type="hidden" th:value="${c.getId()}" name="car_id" id="car_id"  />
-                                </label><br />
-                            </form>
-                        </td>
-                    </tr>
+                        <tr>
+                            <th scope="row" th:text="${c.getPrice()}"></th>
+                            <td th:text="${c.getCarBrand()}"></td>
+                            <td th:text="${c.getCarModel()}"></td>
+                            <td th:text="${c.getImg()}"></td>
+                            <td th:text="${c.getDescription()}"></td>
+                            <td th:if="${flag}">
+                                <form th:method="POST" th:action="@{/delete_car}">
+                                    <input class="btn btn-primary" type="Submit" value="Удалить" />
+                                    <label for="car_id">
+                                        <input type="hidden" th:value="${c.getId()}" name="car_id" id="car_id"  />
+                                    </label><br />
+                                </form>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
-                <br/>
-
             </div>
-
-        </div>
-
         </div>
     </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
-        <title>Getting Started: Serving Web Content</title>
+        <title>Добавление машины в заявку</title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
     </head>
@@ -9,57 +9,42 @@
         <div th:insert="blocks/header :: header"></div>
         <div>
             <div class="container mt-5">
-
                 <form th:method="POST" th:action="@{/add_car_to_request}"  th:object="${car}">
-
-        Цена, не больше <span th:text="${maxPrice}"/>:
-        <br/>
-        <input type="text" id="price" th:field="*{price}" class="form-control" placeholder="Цена"
-               aria-label="Введите цену" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-            <br/>
-
-            Марка:
-            <br/>
-            <input type="text" id="carBrand" th:field="*{carBrand}" class="form-control"
-                   placeholder="Введите марку автомобиля" aria-label="Марка автомобиля (необяз)"
-                   aria-describedby="basic-addon2">
-            <div class="input-group-append">
-                <br/>
-
-        Модель:
-        <br/>
-        <input type="text" id="carModel" th:field="*{carModel}" class="form-control"
-               placeholder="Введите модель" aria-label="Модель"
-               aria-describedby="basic-addon2">
-        <div class="input-group-append">
-            <br/>
-        Фото:
-        <br/>
-        <input type="text" id="img" th:field="*{img}" class="form-control"
-               placeholder="Вставьте ссылку на фото" aria-label="Модель"
-               aria-describedby="basic-addon2">
-        <div class="input-group-append">
-            <br/>
-
-        Описание:
-        <br/>
-        <textarea type="text" id="description" th:field="*{description}" class="form-control"
-               placeholder="Введите описание" aria-label="Модель"
-               aria-describedby="basic-addon2">
-        </textarea>
-            <br/>
-        <input class="btn btn-primary" type="Submit" value="Добавить"/>
-
-        <label for="id_request">
-            <input type="hidden" th:value="${id_request}" name="id_request" id="id_request"  />
-        </label><br />
-
-
+                    Цена, не больше <span th:text="${maxPrice}"/>:
+                    <br/>
+                    <input type="text" id="price" th:field="*{price}" class="form-control" placeholder="Цена"
+                           aria-label="Введите цену" aria-describedby="basic-addon2">
+                    <div class="input-group-append"/><br/>
+                    Марка:
+                    <br/>
+                    <input type="text" id="carBrand" th:field="*{carBrand}" class="form-control"
+                           placeholder="Введите марку автомобиля" aria-label="Марка автомобиля (необяз)"
+                           aria-describedby="basic-addon2">
+                    <div class="input-group-append"/><br/>
+                    Модель:
+                    <br/>
+                    <input type="text" id="carModel" th:field="*{carModel}" class="form-control"
+                           placeholder="Введите модель" aria-label="Модель"
+                           aria-describedby="basic-addon2">
+                    <div class="input-group-append"/><br/>
+                    Фото:
+                    <br/>
+                    <input type="text" id="img" th:field="*{img}" class="form-control"
+                           placeholder="Вставьте ссылку на фото" aria-label="Модель"
+                           aria-describedby="basic-addon2">
+                    <div class="input-group-append"/><br/>
+                    Описание:
+                    <br/>
+                    <textarea type="text" id="description" th:field="*{description}" class="form-control"
+                           placeholder="Введите описание" aria-label="Модель"
+                           aria-describedby="basic-addon2">
+                    </textarea><br/>
+                    <input class="btn btn-primary" type="Submit" value="Добавить"/>
+                    <label for="id_request">
+                        <input type="hidden" th:value="${id_request}" name="id_request" id="id_request"/>
+                    </label><br/>
                 </form>
-
                 <h1 th:text="${error}" style="color: #ff0000; background-color: #00ffff"/>
-
             </div>
         </div>
     </body>

@@ -34,7 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/register").permitAll()
                 .antMatchers("/company_requests", "/edit_company", "/edit_companyP", "/denied_request",
                         "/access_request", "/add_car_to_request", "/delete_car", "/finish_podbor").hasRole("COMPANY")
-                .antMatchers("/requests/**", "/add_request", "/choose_car").hasRole("CLIENT")
+                .antMatchers("/requests/**", "/add_request", "/choose_car",
+                        "/company/**/request").hasRole("CLIENT")
                 .antMatchers("/**").authenticated()
 
                 .and()

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
-        <title>Мои заявки</title>
+        <title>Подобранные авто</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
     </head>
@@ -12,42 +12,38 @@
             <div class="container">
                 <table class="table table-striped">
                     <thead class="table-dark">
-                    <tr>
-                        <th scope="row">Цена</th>
-                        <th scope="col">Марка</th>
-                        <th scope="col">Модель</th>
-                        <th scope="col">Фото</th>
-                        <th scope="col">Описание</th>
-                        <th scope="col">Выбрать</th>
-                    </tr>
+                        <tr>
+                            <th scope="row">Цена</th>
+                            <th scope="col">Марка</th>
+                            <th scope="col">Модель</th>
+                            <th scope="col">Фото</th>
+                            <th scope="col">Описание</th>
+                            <th scope="col">Выбрать</th>
+                        </tr>
                     </thead>
                     <tbody th:each= "c : ${cars}">
-                    <tr>
-                        <th scope="row" th:text="${c.getPrice()}"></th>
-                        <td th:text="${c.getCarBrand()}"></td>
-                        <td th:text="${c.getCarModel()}"></td>
-                        <td th:text="${c.getImg()}"></td>
-                        <td th:text="${c.getDescription()}"></td>
-                        <td>
-                            <form th:method="POST" th:action="@{/choose_car}">
-                                <input class="btn btn-primary" type="Submit" value="Выбрать" />
-                                <label for="car_id">
-                                    <input type="hidden" th:value="${c.getId()}" name="car_id" id="car_id"  />
-                                </label><br />
-                                <label for="request_id">
-                                    <input type="hidden" th:value="${c.getRequest().getId()}" name="request_id" id="request_id"  />
-                                </label><br />
-                            </form>
-                        </td>
-                    </tr>
+                        <tr>
+                            <th scope="row" th:text="${c.getPrice()}"></th>
+                            <td th:text="${c.getCarBrand()}"></td>
+                            <td th:text="${c.getCarModel()}"></td>
+                            <td th:text="${c.getImg()}"></td>
+                            <td th:text="${c.getDescription()}"></td>
+                            <td>
+                                <form th:method="POST" th:action="@{/choose_car}">
+                                    <input class="btn btn-primary" type="Submit" value="Выбрать"/>
+                                    <label for="car_id">
+                                        <input type="hidden" th:value="${c.getId()}" name="car_id" id="car_id"/>
+                                    </label><br/>
+                                    <label for="request_id">
+                                        <input type="hidden" th:value="${c.getRequest().getId()}" name="request_id"
+                                               id="request_id"/>
+                                    </label><br/>
+                                </form>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
-                <br/>
-
             </div>
-
-        </div>
-
         </div>
     </body>
 </html>
