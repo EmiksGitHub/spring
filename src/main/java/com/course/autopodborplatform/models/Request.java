@@ -11,7 +11,7 @@ public class Request {
     private Long id;
 
     @Column(nullable = true)
-    private int price;
+    private Integer price;
 
     @Column(nullable = true)
     private String carBrand;
@@ -58,11 +58,11 @@ public class Request {
         this.id = id;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 

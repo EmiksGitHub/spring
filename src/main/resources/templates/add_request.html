@@ -11,7 +11,7 @@
             <div class="container mt-5">
                 <form th:method="POST" th:action="@{/add_request}"  th:object="${request}">
                     Бюджет:<br>
-                    <input type="text" id="price" th:field="*{price}" class="form-control" placeholder="Бюджет"><br>
+                    <input type="text" id="price" th:field="*{price}" class="form-control" placeholder="Введите бюджет"><br>
                     Марка:<br>
                     <input type="text" id="carBrand" th:field="*{carBrand}" class="form-control"
                            placeholder="Введите марку автомобиля (необяз)" aria-describedby="basic-addon2"><br>
@@ -20,13 +20,12 @@
                            placeholder="Введите модель (необяз)" aria-describedby="basic-addon2"><br>
                     Цели использования:<br>
                     <textarea type="text" id="purpose" th:field="*{purpose}" class="form-control"
-                              placeholder="Введите использвания" aria-describedby="basic-addon2">
+                              placeholder="Введите цели использвания" aria-describedby="basic-addon2">
                     </textarea><br>
                     <input class="btn btn-primary" type="Submit" value="Оформить"/>
                     <label for="company_id">
                         <input type="hidden" th:value="${company_id}" name="company_id" id="company_id"/>
                     </label>
-                    <!--<input type="reset" value="Reset"/>-->
                 </form>
             </div>
         </div>

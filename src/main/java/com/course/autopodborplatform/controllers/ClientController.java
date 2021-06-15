@@ -64,7 +64,9 @@ public class ClientController {
 
     @GetMapping("/company/{id}/request") //Страница оформления заявки в компанию
     public String addRequest(@PathVariable(value = "id") long id, Model model, Principal principal) {
-        model.addAttribute("request", new Request());
+        Request request = new Request();
+        request.setPrice(null);
+        model.addAttribute("request", request);
         model.addAttribute("company_id", id);
         model.addAttribute("user", userRepository.findByUsername(principal.getName()).get());
         return "add_request";
